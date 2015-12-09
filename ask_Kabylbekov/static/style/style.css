@@ -1,0 +1,84 @@
+.conteiner {
+	margin: 0px, 10px;
+	padding: 15px;
+}
+
+#header {
+	background: #000000;
+	height: 50px;
+}
+
+img {
+	width: 120px;
+	height: 40px;
+}
+
+.col-lg-4 {
+	
+	
+}
+
+.col-lg-8 {
+	background: #FFFFF0;
+}
+
+#input-question {
+	background: #FFFFF0;
+	height: 200px;
+}
+
+#questions-header {
+	background: #FFFFF0;
+
+}
+
+#questions-list {
+	background: #FFFFF0;
+	
+}
+
+#pages {
+	background: #000;
+	height: 60px;
+}
+
+#formQuestion {
+	padding-top: 30px;
+	padding-left: 250px;
+}
+
+#askQuestion {
+	width: 400px;
+	height: 150px;
+}
+
+#buttonQuestion {
+	margin-left: 430px;
+}
+
+#Tag  {
+	text-align: center;
+	border-bottom: solid;
+}	
+
+#Leaders {
+	text-align: center;
+	border-bottom: solid;
+}
+#avatar{
+	width: 40px;
+	height: 40px;
+}
+
+#questions-header h1 {
+	text-align: center;
+}
+
+th {
+	height:45px;
+}
+td {
+	height: 100px;
+}
+
+

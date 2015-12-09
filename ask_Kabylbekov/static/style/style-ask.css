@@ -1,0 +1,74 @@
+#content {
+	background: #FFFFFF;
+}
+
+#sidebar {
+	margin-top: 80px;
+}
+
+#sidebar #tags {
+	background: #F8F8F8   ;
+}
+
+#Header {
+	padding-bottom: 20px;
+}
+
+#ProjectName {
+	font-family: Verdana;
+	font-style: italic;
+	letter-spacing: 3px;
+	font-size:200%;
+}
+
+
+/*login*/
+#login {
+	padding-top: 20px;
+	background: #F5F5F5;
+	
+}
+#login_head {
+	margin-top: 80px;
+}
+
+#login_head p {
+	color: #000;
+}
+
+#login_head h1 {
+	text-align: center;
+	color: #32CD32;
+}
+#login_footer {
+	padding-top: 5px;
+	text-align: center;
+}
+#login_footer p {
+	color: #000000;
+	font-size: 12px;
+
+}
+#login_footer a {
+	color: #32CD32;
+	line-height: 5px;
+}
+
+/*sidebar*/
+#sidebar h2 {
+	text-indent: 60px;
+	font-family: Verdana;
+	color: #32CD32; ;
+}
+#sidebar li {
+	font-family: Verdana;
+}
+#sidebar a {
+	color: #000000;
+}
+#sidebar img{
+	width: 50px;
+	height: 50px;
+}
+
+

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+		
+				{% block login %}
+
+<div class="row">
+			<div class="col-lg-8" id="content">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2" id="login_head">
+
+
+
+				<div class="row">
+
+					<div class="col-lg-8 col-lg-offset-3" id="login_head">
+					
+						<h1>Войти в систему</h1>
+					</div>
+					
+					<div class="col-lg-8 col-lg-offset-3" id="login">
+						<form>
+  							<div class="form-group ">
+  								<label for="inputEmail">Адрес email:</label>
+   								<input type="email" class="form-control" id="inputEmail" placeholder="Введите email">
+  							</div>
+
+  							<div class="form-group">
+   								 <label for="inputPassword">Пароль:</label>
+    							<input type="password" class="form-control" id="inputPassword" placeholder="Введите пароль">
+  							</div>
+
+  							<div class="checkbox">
+    							<label>
+      								<input type="checkbox"> Запомнить
+    							</label>
+    						</div>
+    						
+    						<button type="submit" class="btn btn-success btn-lg btn-block">Войти</button>
+							
+							<br>
+    						<a href="#">Забыли пароль?</a>
+
+						</form>
+					</div>
+
+					<div class="col-lg-8 col-lg-offset-3" id="login_footer">
+						<p>У вас нет аккаунта?</p>
+						<a href="#"><h4>Создать аккаунт</h4></a></p>
+					</div>
+					
+				</div>
+
+
+				</div>
+				</div>
+			</div>
+				{% endblock %}
+			
+
+
+
+
+
+
+
+
+
+
+
+		

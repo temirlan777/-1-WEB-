@@ -1,0 +1,85 @@
+worker_processes  auto;
+events {
+    use epoll;
+    worker_connections 1024;
+    multi_accept on;
+}
+
+
+
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    access_log off;
+    error_log /var/log/nginx/error.log crit;
+
+    keepalive_timeout  30;
+    keepalive_requests 100;
+
+    client_max_body_size  1m;
+    client_body_timeout 10;
+    reset_timedout_connection on;
+    send_timeout 2;
+    sendfile on;
+    tcp_nopush on;
+
+    gzip on;
+    gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript;
+
+    open_file_cache max=200000 inactive=20s;
+    open_file_cache_valid 30s;
+    open_file_cache_min_uses 2;
+    open_file_cache_errors on;
+
+    #proxy settings
+	proxy_cache_path /var/lib/nginx/cache levels=1:2 keys_zone=backcache:8m max_size=50m;
+	proxy_cache_key "$scheme$request_method$host$request_uri$is_args$args";
+	proxy_cache_valid 200 302 10m;
+	proxy_cache_valid 404 1m;
+
+	server {
+		listen 80;
+
+		#root /usr/share/nginx/html;
+		server_name localhost;
+
+		#Static files from /static
+		location ~* ^.+\.(html|css|js|png)$ {
+			proxy_cache backcache;
+        		proxy_cache_valid 10m;
+       			proxy_cache_valid 404 1m;
+        
+
+			root /home/temirlan/ask_Kabylbekov/ask_Kabylbekov/static;
+			error_page 404 = 404;
+			}
+
+		location /uploads/ {
+			root /home/temirlan/ask_Kabylbekov/ask_Kabylbekov/uploads;
+			error_page 404 = 404;
+			}
+		
+		location / {
+			proxy_pass http://127.0.0.1:8000;
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			}
+
+		location /proxy-me {
+    			proxy_cache backcache;
+		    	proxy_cache_bypass $http_cache_control;
+		    	add_header X-Proxy-Cache $upstream_cache_status;
+    			proxy_pass http://127.0.0.1:8000;
+			}		
+		}
+
+		
+		
+	upstream backend {
+		    server 127.0.0.1:8000 max_fails=2 fail_timeout=2s;
+		}	
+}
+
+
+

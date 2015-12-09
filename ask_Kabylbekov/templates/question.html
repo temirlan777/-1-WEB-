@@ -1,0 +1,151 @@
+
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% block question %}
+		<div class="row">
+
+			<div class="col-lg-8 offset-2" id="content">
+				<div class="row">
+
+					<div class="col-lg-2">
+						
+					</div>
+
+					<div class="col-lg-8" id="login_head">
+						
+						<div itemscope="" itemtype="" class="tickets-row">
+						  <div class="panel panel-success">
+						    <div class="panel-body">
+						      <div class="name-section ticket-section">
+						        <span class="name-section-style">
+						          <a href="">
+						            <span itemprop="articleSection">{{question.tag}}
+						          </a>
+						        </span>
+						      </div>
+
+							<!--Заголовок вопроса-->
+						      <h3 class="title title-ticket">
+						        <a itemprop="url" href="">
+						          <span itemprop="name">
+						            <p><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> {{question.title}}</p>
+						          </span>
+						        </a>
+						      </h3>
+
+
+
+      <div class="content">
+        <p>{{question.content}}</p>
+        
+      </div>
+    </div>
+
+
+    <div class="panel-footer">
+      <div data-id="">
+        <span class="info-title-right">
+          <span class="glyphicon glyphicon-calendar"></span>
+          <span class="hidden" itemprop="datePublished" content="">
+            
+          </span>
+          <span>{{question.created}}</span>
+        </span>
+
+        <span class="info-title-both">
+	  <span class="glyphicon glyphicon-user"></span> 
+          <span itemprop="author" itemscope="" itemtype="">
+            <span itemprop="name">{{question.author}}</span>
+          </span>
+	</span>
+
+	
+	  
+	  <span class="glyphicon glyphicon-comment"></span> {{question.counts}}  
+	</span>
+		
+        <span class="info-title-last ticket-rating inactive">
+	  <span class="vote plus" title="Нравится">
+            <span class="glyphicon glyphicon-thumbs-up">{{question.rating}}</span>
+          </span>
+	
+	  
+	</span>
+      </div>
+    </div>
+  	</div>
+
+
+
+
+
+
+
+	{%for answer in answers%}
+
+	<div class="panel panel-default">
+ 		<div class="panel-body"> 
+				<a href="#"><img src="{{answer.author.avatar}}" alt="Avatar" class="img-circle" id="avatar" height="50px" usemap="imgmap201510614329"><map id="imgmap201510614329" name="imgmap201510614329"><!-- Created by Online Image Map Editor (http://www.maschek.hu/imagemap/index) -->
+				</map> </a>
+				{{answer.content}}
+			</div>
+
+		<!--Оформление-->
+		 <div class="panel-footer">
+      <div data-id="">
+        <span class="info-title-right">
+          <span class="glyphicon glyphicon-calendar"></span>
+          <span class="hidden" itemprop="datePublished" content="">
+           
+          </span>
+          <span>{{answer.created}}</span>
+        </span>
+
+        <span class="info-title-both">
+	  <span class="glyphicon glyphicon-user"></span> 
+          <span itemprop="author" itemscope="" itemtype="">
+            <span itemprop="name">{{answer.author}}</span>
+          </span>
+	</span>
+
+	
+      </div>
+    </div>
+  	
+ 	</div>
+
+{%endfor%}
+
+
+ 		<div class="panel-footer">
+ 			<button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-thumbs-up"> </i></button>
+ 			<button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-thumbs-down"> </i></button>
+ 			<button type="submit" class="btn btn-success">Комментировать</button>
+ 		</div>
+
+	</div>
+  		<textarea class="form-control" rows="3" placeholder="Введите ваш ответ..."></textarea>
+		<button type="button" class="btn btn-success btn-lg btn-block">Ответить</button>
+	</div>
+
+
+
+
+
+
+					</div>
+				</div>
+
+
+
+
+			
+				{% endblock %}
+
+<!-- Первый пост -->
+						
+			
+
+
+			

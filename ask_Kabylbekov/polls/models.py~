@@ -1,0 +1,105 @@
+from django.db import models
+from django.contrib.auth.models import User, UserManager
+
+import datetime 
+
+# Create your models here.
+
+class NewestQuestionManager(models.Manager):
+    def get_queryset(self):
+        return super(NewestQuestionManager, self).get_queryset().order_by('-created')
+
+
+class BestQuestionManager(models.Manager):
+    def get_queryset(self):
+        return super(BestQuestionManager, self).get_queryset().order_by('-rating')
+
+
+class CustomUser(User):
+    avatar = models.ImageField()
+    objects = UserManager()
+
+
+class Tag(models.Model):
+    title = models.CharField(max_length=100, unique=True)
+
+
+class Like(models.Model):
+    value = models.IntegerField()
+    author = models.ForeignKey(CustomUser)
+
+
+class Question(models.Model):
+    title = models.TextField()
+    content = models.TextField()
+    created = models.DateTimeField()
+    author = models.ForeignKey(CustomUser)
+    tags = models.ManyToManyField(Tag)
+    rating = models.IntegerField(default=0)
+    likes = models.ManyToManyField(Like)
+
+    objects = models.Manager()
+    newest_questions = NewestQuestionManager()
+    best_questions = BestQuestionManager()
+
+
+class Answer(models.Model):
+    created = models.DateTimeField()
+    question = models.ForeignKey(Question, null=True)
+    content = models.TextField()
+    author = models.ForeignKey(CustomUser)
+    rating = models.IntegerField(default=0)
+    correct = models.BooleanField(default=False)
+    likes = models.ManyToManyField(Like)
+"""
+My first attempt
+
+class CustomUser(User):
+    avatar = models.ImageField()
+    objects = UserManager()
+
+class DB_Tag(models.Model):
+  	title = models.CharField(max_length=100, unique=True)
+
+class DB_Like(models.Model):
+	value = models.IntegerField()
+	author = models.ForeignKey(CustomUser)
+
+class DB_DisLike(models.Model):
+	value = models.IntegerField()
+	author = models.ForeignKey(CustomUser)
+
+
+class NewestQuestionManager(models.Manager):
+	def get_queryset(self):
+		return super(NewestQuestionManager, self).get_queryset().order_by('-created')
+  	
+
+class HotQuestionManager(models.Manager):
+    def get_queryset(self):
+    	return super(HotQuestionManager, self).get_queryset().order_by('-rating')
+
+
+class DB_Question(models.Model):
+	title = models.TextField()
+	content = models.TextField()
+	created = models.DateTimeField()
+	author = models.ForeignKey(CustomUser)
+	tags = models.ManyToManyField(DB_Tag)
+	count_comments = models.IntegerField(default=0)
+	count_views = models.IntegerField(default=0)
+	likes = models.ManyToManyField(DB_Like)
+	dislikes = models.ManyToManyField(DB_DisLike)
+
+	objects = models.Manager()
+	newest_questions = NewestQuestionManager()
+	hot_questions = HotQuestionManager()
+
+
+class DB_Answer(models.Model):
+  	created = models.DateTimeField()
+  	question = models.ForeignKey(DB_Question, null=True)
+  	content = models.TextField()
+  	author = models.ForeignKey(CustomUser)
+"""  	
+   	

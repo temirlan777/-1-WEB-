@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+		{% block ask %}
+		<div class="row">
+			<div class="col-lg-8" id="content">
+				<div class="row">
+					<div class="col-lg-2" id="">
+						<div class="tagForm"><h3>Категория:<h3></div>
+						<div class="titleForm"><h3>Заголовок:<h3></div>
+						<div class="questionForm"><h3>Вопрос:<h3></div>
+					</div>
+					<div class="col-lg-8 " id="login_head">
+						<h1 text-align="center"> Новый вопрос </h1>
+						<br>		
+						<select class="form-control ">
+          					<option value="">Автомобили и Мотоциклы</option>
+          					<option value="">Бизнес и Финансы</option>
+          					<option value="">Досуг и Развлечение</option>
+          					<option value="">Еда и Кулинария</option>
+          					<option value="">Наука и Технологии</option>
+          					<option value="">Политика и Экономика</option>
+          					<option value="">Программирование и Интернет/option>
+          					<option value="">Путешествия и Туризм</option>
+          					<option value="">Семья и Дом</option>
+          					<option value="">Спорт и Здоровье</option>
+          					<option value="">Стиль и Мода</option>
+        				</select>
+						<br>
+						<br>
+
+					<div class="form-group has-error has-feedback">
+        <label class="control-label" for="inputError2">Ввод с ошибкой</label>
+        <input type="text" class="form-control" id="inputError2">
+        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+      </div>
+						
+						<form role="form">
+      						<textarea class="form-control" rows="5"></textarea>
+      					
+    					</form>
+    					<br>
+    					<button type="button" class="btn btn-success btn-lg btn-block">Задать вопрос</button>
+					
+								
+
+					</div>
+				</div>
+			</div>
+				
+	{% endblock %}
+
+						
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
